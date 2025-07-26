@@ -1,26 +1,17 @@
-I need to summarize a conversation. The transcript of the 
-conversation is between the <data> XML like tags.
+I need to classify a conversation into columns indicating:
+date of a question, summary of the question, date of the answer, summary of the answer.
+
+The conversation is between the <data> XML like tags.
 
 <data>
-{{transcript}}
+{{conversacion}}
 </data>
 
-The summary must contain a one word sentiment analysis, and 
-a list of issues, problems or causes of friction
-during the conversation. The output must be provided in 
-JSON format shown in the following example. 
+The output must be provided in CSV format shown in the following example. 
 
 Example output:
-{
-    "sentiment": <sentiment>,
-    "issues": [
-        {
-            "topic": <topic>,
-            "summary": <issue_summary>,
-        }
-    ]
-}
+date of a question, summary of the question, date of the answer, summary of the answer.
 
-Write the JSON output and nothing more.
+Write the CSV output and nothing more.
 
-Here is the JSON output:
+Here is the CSV output:
