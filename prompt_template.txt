@@ -1,17 +1,16 @@
-I need to classify a conversation into columns indicating:
-date of a question, summary of the question, date of the answer, summary of the answer.
+The following text is a collection of separate conversations between a customer and Marcos.
+The customer asks questions and Marcos provides solutions. The conversation has the format:
 
-The conversation is between the <data> XML like tags.
+date, time - person (or phone number): message
 
-<data>
-{{conversacion}}
-</data>
+This is the conversation: {{conversacion}}
 
-The output must be provided in CSV format shown in the following example. 
+Create a short summary of the conversation in SPANISH indicating:
+date of the question
+summary of the question
+date of the solution
+summary of the solution
 
-Example output:
-date of a question, summary of the question, date of the answer, summary of the answer.
 
-Write the CSV output and nothing more.
 
-Here is the CSV output:
+
