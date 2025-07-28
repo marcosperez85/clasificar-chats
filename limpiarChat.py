@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 
 # Ruta a la carpeta que contiene los chats
-carpeta = Path("/home/marcos/Downloads/Chats")  # Podés cambiarla si querés
+carpeta = Path("c:\Marcos\Chats")  # Podés cambiarla si querés
 
 # Expresión regular para detectar líneas válidas de conversación
 regex_mensaje = re.compile(r"^\d{1,2}/\d{1,2}/\d{2}, \d{2}:\d{2} - [^:]+: .+")

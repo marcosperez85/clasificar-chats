@@ -15,17 +15,14 @@ from jinja2 import Template
 # Used the os.path.join() function to construct the path correctly, regardless of the operating system.
 # This is a good practice when working with file paths in Python.
 
-
 # Ruta a la carpeta que contiene los chats
-carpeta = Path("/home/marcos/Downloads/Chats_Limpios")
+carpeta = Path("c:\\Marcos\\Chats_Limpios")
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 # Especifico mi sesión de para el usuario del IAM Identity Center (SSO)
 session = boto3.Session(profile_name="AdministratorAccess-376129873205")
-
-
 
 # ===============================================
 # Sección para procesar el archivo de texto.
@@ -40,7 +37,7 @@ with open("chats_clasificados.txt", "w", encoding="utf-8") as f:
 
     # Recorre todos los archivos .txt en la carpeta
     for archivo in glob.glob(os.path.join(carpeta, "*.txt")):
-        with open(archivo, "r") as file:
+        with open(archivo, "r", encoding="utf-8") as file:
             conversacion = file.read()
 
             # En este caso donde tenemos una arquitectura Serverless vamos a tener un template de Jinja.
@@ -49,7 +46,7 @@ with open("chats_clasificados.txt", "w", encoding="utf-8") as f:
             # Esto permite intercambiar prompts en vivo mientras la aplicación está en producción.
 
             # Leemos el archivo de texto del prompt y lo guardamos en una variable.
-            with open('prompt_template.txt', "r") as file:
+            with open('prompt_template.txt', "r", encoding="utf-8") as file:
                 template_string = file.read()
 
             # Llamamos al objeto Template que nos habíamos traido de la librería Jinja y le cargamos el contenido
