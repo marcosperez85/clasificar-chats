@@ -59,24 +59,21 @@ with open("chats_clasificados.txt", "w", encoding="utf-8") as f:
 
             # Declaro todos los argumentos que le pasamos a Bedrock más adelante.
             kwargs = {
-                "modelId": "meta.llama3-8b-instruct-v1:0",
+                "modelId": "cohere.command-r-plus-v1:0",
                 "contentType": "application/json",
                 "accept": "*/*",
                 "body": json.dumps(
                     {
-                        "prompt": prompt,
-                        "temperature": 0,
-                        # "textGenerationConfig": {
-                        #     "maxTokenCount": 2048,
-                        #     "topP": 0.9
-                        # }
+                        "message": prompt,
+                        "max_tokens": 32000,
+                        "temperature": 0.1
                     }
                 )
             }
 
             response = bedrock_runtime.invoke_model(**kwargs)
             response_body = json.loads(response.get('body').read())
-            generation = response_body.get("generation", "")
+            generation = response_body.get("text", "")
             print(f"\nClasificación para el archivo: {archivo}:\n{generation}")
             
             with open("chats_clasificados.txt", "a", encoding="utf-8") as f:
