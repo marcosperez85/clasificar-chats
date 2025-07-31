@@ -21,7 +21,8 @@ Para instalar el entorno virtual y las dependencias necesarias, siga los siguien
 ## Autenticación (sólo para la versión con AWS)
 Antes de poder usar el script, es necesario iniciar sesión en el AWS CLI con un usuario IAM SSO. Para eso hacen falta los siguientes pasos:
 1. Ejecutar el comando `aws configure sso`
-2. Completar los campos de nombre de sesión y dejar los demás campos con valores por default.
-3. Es importante usar un usuario con permisos para ejecutar Bedrock en la región us-east-1.
+2. Completar el campo de nombre de sesión.
+3. Loguearse en el navegador con un usuario que tenga permiso para ejecutar Bedrock en la región us-east-1.
+4. Dejar los demás campos con valores por default. 
 
 Con estas instrucciones puedes instalar el entorno virtual y las dependencias necesarias para ejecutar el script `clasificarChats`.
