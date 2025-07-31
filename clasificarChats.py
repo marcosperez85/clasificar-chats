@@ -10,6 +10,7 @@ from pathlib import Path
 import logging
 from pathlib import Path
 from jinja2 import Template
+from botocore.config import Config
 
 # Imported os and glob modules, which are needed for working with file paths and pattern matching.
 # Used the os.path.join() function to construct the path correctly, regardless of the operating system.
@@ -26,8 +27,8 @@ session = boto3.Session(profile_name="AdministratorAccess-376129873205")
 
 # ===============================================
 # Sección para procesar el archivo de texto.
-
-bedrock_runtime = session.client('bedrock-runtime', region_name='us-east-1')
+config = Config(read_timeout=120, connect_timeout=30)
+bedrock_runtime = session.client('bedrock-runtime', region_name='us-east-1', config=config)
 
 # Creo un archivo vacío antes del loop
 Path("chats_clasificados.txt").write_text("", encoding="utf-8")
@@ -65,8 +66,8 @@ with open("chats_clasificados.txt", "w", encoding="utf-8") as f:
                 "body": json.dumps(
                     {
                         "message": prompt,
-                        "max_tokens": 32000,
-                        "temperature": 0.1
+                        "max_tokens": 16000,
+                        "temperature": 0
                     }
                 )
             }
