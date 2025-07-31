@@ -66,17 +66,24 @@ with open("chats_clasificados.txt", "w", encoding="utf-8") as f:
                 "body": json.dumps(
                     {
                         "message": prompt,
-                        "max_tokens": 16000,
+                        "max_tokens": 12000,
                         "temperature": 0
                     }
                 )
             }
 
-            response = bedrock_runtime.invoke_model(**kwargs)
-            response_body = json.loads(response.get('body').read())
-            generation = response_body.get("text", "")
-            print(f"\nClasificación para el archivo: {archivo}:\n{generation}")
-            
-            with open("chats_clasificados.txt", "a", encoding="utf-8") as f:
-                f.write(f"\n--- Clasificación del archivo: {archivo} ---\n")
-                f.write(generation + "\n")
+            try:
+                response = bedrock_runtime.invoke_model(**kwargs)
+                response_body = json.loads(response.get('body').read())
+                generation = response_body.get("text", "")
+                print(f"\nClasificación para el archivo: {archivo}:\n{generation}")
+
+                with open("chats_clasificados.txt", "a", encoding="utf-8") as f:
+                    f.write(f"\n--- Clasificación del archivo: {archivo} ---\n")
+                    f.write(generation + "\n")
+
+            except Exception as e:
+                logging.error(f"Error procesando {archivo}: {e}")
+                generation = "Error al procesar este archivo."
+
+
