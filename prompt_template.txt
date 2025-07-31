@@ -2,15 +2,17 @@ The following text contains multiple separate conversations between a customer a
 The customer asks questions and Marcos provides solutions.
 
 Each message in the conversation follows this format:
-date, time - person: message
+MM/DD/YYYY, time - person: message
 
-Here is the conversation:
+This is the conversation:
 {{conversacion}}
 
-Your task is to generate a short summary of each interaction in SPANISH grouping all exchanges that occurred on the same date.
-The output must be provided in columns separated by * as shown in the following example
+Your task is to generate a short summary of each interaction in SPANISH. The summary MUST follow these rules:
+Group all exchanges that occurred on the same date.
+Only include interactions where the CUSTOMER asked a question and Marcos answered them.
+The output must be provided in fields separated by * as shown in the following example:
 
 Example output:
-Question DD/MM/YYYY*Short summary of the Question*Answer DD/MM/YYYY*Short summary of the Answer
+DD/MM/YYYY of the CUSTOMER question*Short summary of the CUSTOMER question*DD/MM/YYYY of Marcos answer*Short summary of Marcos answer.
 
 Write the output and nothing more.
